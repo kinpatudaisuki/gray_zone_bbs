@@ -18,6 +18,7 @@ class PostController extends Controller
             'body' => $request->body
         ]);
 
+        $request->session()->flash('message', '保存しました');
         return view('post.create');
     }
 }
