@@ -7,10 +7,12 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    //投稿作成
     public function create(){
         return view('post.create');
     }
 
+    //投稿の保存
     public function store(Request $request){
 
         $validated = $request->validate([
@@ -22,5 +24,11 @@ class PostController extends Controller
 
         $request->session()->flash('message', '保存しました');
         return back();
+    }
+
+    //投稿一覧画面
+    public function index() {
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
 }
