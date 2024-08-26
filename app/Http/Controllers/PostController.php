@@ -21,6 +21,6 @@ class PostController extends Controller
         $post = Post::create($validated);
 
         $request->session()->flash('message', '保存しました');
-        return view('post.create');
+        return back();
     }
 }
