@@ -20,6 +20,8 @@ class PostController extends Controller
             'body' => 'required|max:400',
         ]);
 
+        $validated['user_id'] = auth()->id();
+
         $post = Post::create($validated);
 
         $request->session()->flash('message', '保存しました');
