@@ -24,11 +24,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //投稿の作成と保存
-Route::get('post', [PostController::class, 'create']);
+Route::get('post/create', [PostController::class, 'create'])->name('create');
 Route::post('post', [PostController::class, 'store'])
 ->name('post.store');
 //投稿一覧表示
-Route::get('post', [PostController::class, 'index']);
+Route::get('post/index', [PostController::class, 'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
