@@ -30,7 +30,7 @@ class PostController extends Controller
 
     //投稿一覧画面
     public function index() {
-        $posts = Post::all();
+        $posts = Post::with('user')->get();
         return view('post.index', compact('posts'));
     }
 }
