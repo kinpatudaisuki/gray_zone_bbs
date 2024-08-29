@@ -33,4 +33,9 @@ class PostController extends Controller
         $posts = Post::with('user')->get();
         return view('post.index', compact('posts'));
     }
+
+    //投稿個別表示
+    public function show(Post $post) {
+        return view('post.show', compact('post'));
+    }
 }
