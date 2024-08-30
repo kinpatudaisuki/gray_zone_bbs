@@ -53,9 +53,10 @@ class PostController extends Controller
 
         $validated['user_id'] = auth()->id();
 
-        $post->update($validated);
-
-        $request->session()->flash('message', '更新しました');
+        if($post['user_id'] == auth()->id()){
+            $post->update($validated);
+            $request->session()->flash('message', '更新しました');
+        }
         return back();
     }
 }
