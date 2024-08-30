@@ -34,6 +34,12 @@ Route::get('post/index', [PostController::class, 'index'])->name('post.index');
 //投稿個別表示
 Route::get('post/show/{post}', [PostController::class, 'show'])->name('post.show');
 
+//投稿の編集
+Route::get('post/edit/{post}', [PostController::class, 'edit'])->name('post.edit');
+
+//投稿の更新
+Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

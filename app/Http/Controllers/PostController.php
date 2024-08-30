@@ -8,12 +8,12 @@ use App\Models\Post;
 class PostController extends Controller
 {
     //投稿作成
-    public function create(){
+    public function create() {
         return view('post.create');
     }
 
     //投稿の保存
-    public function store(Request $request){
+    public function store(Request $request) {
 
         $validated = $request->validate([
             'title' => 'required|max:20',
@@ -37,5 +37,25 @@ class PostController extends Controller
     //投稿個別表示
     public function show(Post $post) {
         return view('post.show', compact('post'));
+    }
+
+    //投稿の編集
+    public function edit(Post $post) {
+        return view('post.edit', compact('post'));
+    }
+
+    //投稿の更新
+    public function update(Request $request, Post $post) {
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        $post->update($validated);
+
+        $request->session()->flash('message', '更新しました');
+        return back();
     }
 }
