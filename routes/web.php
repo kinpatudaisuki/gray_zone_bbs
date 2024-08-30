@@ -40,6 +40,9 @@ Route::get('post/edit/{post}', [PostController::class, 'edit'])->name('post.edit
 //投稿の更新
 Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
 
+//投稿の削除
+Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -59,4 +59,13 @@ class PostController extends Controller
         }
         return back();
     }
+
+    //投稿の削除
+    public function destroy(Request $request, Post $post) {
+        if($post['user_id'] == auth()->id()){
+            $post->delete();
+            $request->session()->flash('message', '削除しました');
+        }
+        return redirect()->route('post.index');
+    }
 }
