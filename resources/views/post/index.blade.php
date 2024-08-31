@@ -29,6 +29,9 @@
         </div>
       </div>
       @endforeach
+      <div class="mb-4">
+        {{$posts->links()}}
+      </div>
     @endif
   </div>
 </x-app-layout>
