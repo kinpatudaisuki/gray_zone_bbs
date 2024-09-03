@@ -15,17 +15,32 @@ class PostController extends Controller
     //投稿の保存
     public function store(Request $request) {
 
-        $validated = $request->validate([
-            'title' => 'required|max:20',
-            'body' => 'required|max:400',
+        //ログインしてなかったらログイン画面に遷移
+        if(!auth()->user()){
+            return redirect()->route('login');
+        }
+
+        $inputs=request()->validate([
+            'title'=>'required|max:255',
+            'body'=>'required|max:1000',
+            'image'=>'image|max:1024'
         ]);
 
-        $validated['user_id'] = auth()->id();
+        $post=new Post();
+        $post->title=$inputs['title'];
+        $post->body=$inputs['body'];
+        $post->user_id=auth()->user()->id;
 
-        $post = Post::create($validated);
+        if (request('image')){
+            $originalName = request()->file('image')->getClientOriginalName();
+             //画像名に日時追加して上書きされないようにする
+            $imageName = date('Ymd_His').'_'.$originalName;
+            request()->file('image')->move('storage/images', $imageName);
+            $post->image = $imageName;
+        }
 
-        $request->session()->flash('message', '保存しました');
-        return back();
+        $post->save();
+        return redirect()->route('post.create')->with('message', '投稿を作成しました');
     }
 
     //投稿一覧画面

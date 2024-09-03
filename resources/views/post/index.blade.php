@@ -10,7 +10,7 @@
           {{session('message')}}
         </div>
     @endif
-    @if(isset($posts))
+    @if($posts)
       @foreach ($posts as $post)
       <div class="mt-4 p-8 bg-white w-full rounded-2xl">
         <h1 class="p-4 text-lg font-semibold">
@@ -19,6 +19,9 @@
           </a>
         </h1>
         <hr class="w-full">
+        @if($post->image)
+          <img src="/storage/images/{{$post->image}}" alt="投稿画像" width="500">
+        @endif
         <p class="mt-4 p-4">
           {{$post->body}}
         </p>
