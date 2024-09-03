@@ -78,6 +78,8 @@ class PostController extends Controller
     //投稿の削除
     public function destroy(Request $request, Post $post) {
         if($post['user_id'] == auth()->id()){
+            //コメントも削除
+            $post->comments()->delete();
             $post->delete();
             $request->session()->flash('message', '削除しました');
         }

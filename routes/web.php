@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,9 @@ Route::patch('post/{post}', [PostController::class, 'update'])->name('post.updat
 
 //投稿の削除
 Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
+//コメントの作成と保存
+Route::post('post/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
