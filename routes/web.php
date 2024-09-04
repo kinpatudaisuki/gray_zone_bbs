@@ -27,6 +27,9 @@ Route::get('/dashboard', function () {
 //自分の投稿一覧
 Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
 
+//自分のコメント一覧
+Route::get('post/mycomment', [PostController::class, 'mycomment'])->name('post.mycomment');
+
 //投稿の作成と保存
 Route::get('post/create', [PostController::class, 'create'])->name('post.create');
 Route::post('post', [PostController::class, 'store'])

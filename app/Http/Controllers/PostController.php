@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -91,5 +92,13 @@ class PostController extends Controller
         $user_id = $user->id;
         $posts = Post::where('user_id', $user_id)->latest()->paginate(10);
         return view('post.mypost', compact('posts', 'user'));
+    }
+
+    //自分のコメント一覧
+    public function mycomment() {
+        $user = auth()->user();
+        $user_id = $user->id;
+        $comments = Comment::where('user_id', $user_id)->latest()->paginate(10);
+        return view('post.mycomment', compact('comments', 'user'));
     }
 }
