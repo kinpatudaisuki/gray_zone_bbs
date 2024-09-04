@@ -24,6 +24,9 @@ Route::get('/dashboard', function () {
     return view('post/create');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//自分の投稿一覧
+Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
+
 //投稿の作成と保存
 Route::get('post/create', [PostController::class, 'create'])->name('post.create');
 Route::post('post', [PostController::class, 'store'])

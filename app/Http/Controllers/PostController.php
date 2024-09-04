@@ -84,4 +84,12 @@ class PostController extends Controller
         }
         return redirect()->route('post.index');
     }
+
+    //自分の投稿一覧
+    public function mypost() {
+        $user = auth()->user();
+        $user_id = $user->id;
+        $posts = Post::where('user_id', $user_id)->latest()->paginate(10);
+        return view('post.mypost', compact('posts', 'user'));
+    }
 }

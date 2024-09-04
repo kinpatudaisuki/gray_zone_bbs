@@ -21,6 +21,11 @@
                         新規作成
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
+                        自分の投稿
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -77,8 +82,11 @@
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                 投稿一覧
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.post.index')">
+            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.index')">
                 新規作成
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
+                自分の投稿
             </x-responsive-nav-link>
         </div>
 
