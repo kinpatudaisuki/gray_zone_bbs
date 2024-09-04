@@ -20,16 +20,15 @@ class PostController extends Controller
             return redirect()->route('login');
         }
 
-        $inputs=request()->validate([
+        $inputs = request()->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:1000',
-            'image'=>'image|max:1024'
         ]);
 
-        $post=new Post();
-        $post->title=$inputs['title'];
-        $post->body=$inputs['body'];
-        $post->user_id=auth()->user()->id;
+        $post = new Post();
+        $post->title = $inputs['title'];
+        $post->body = $inputs['body'];
+        $post->user_id = auth()->user()->id;
 
         if (request('image')){
             $originalName = request()->file('image')->getClientOriginalName();
