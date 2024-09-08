@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,10 @@ Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.des
 
 //コメントの作成と保存
 Route::post('post/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
+//問い合わせの作成と保存
+Route::get('contact/create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

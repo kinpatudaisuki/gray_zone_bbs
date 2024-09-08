@@ -30,6 +30,7 @@
                 </div>
             @endif
             </div>
+            <a href="{{route('contact.create')}}"><button class="btnsetg">お問い合わせ</button></a>
         </div>
     </body>
 </html>

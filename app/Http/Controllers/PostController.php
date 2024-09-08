@@ -40,7 +40,7 @@ class PostController extends Controller
         }
 
         $post->save();
-        return redirect()->route('post.create')->with('message', '投稿を作成しました');
+        return back()->with('message', '投稿を作成しました');
     }
 
     //投稿一覧画面
@@ -88,6 +88,12 @@ class PostController extends Controller
 
     //自分の投稿一覧
     public function mypost() {
+
+        //ログインしてなかったらログイン画面に遷移
+        if(!auth()->user()){
+            return redirect()->route('login');
+        }
+
         $user = auth()->user();
         $user_id = $user->id;
         $posts = Post::where('user_id', $user_id)->latest()->paginate(10);
@@ -96,6 +102,12 @@ class PostController extends Controller
 
     //自分のコメント一覧
     public function mycomment() {
+
+        //ログインしてなかったらログイン画面に遷移
+        if(!auth()->user()){
+            return redirect()->route('login');
+        }
+
         $user = auth()->user();
         $user_id = $user->id;
         $comments = Comment::where('user_id', $user_id)->latest()->paginate(10);

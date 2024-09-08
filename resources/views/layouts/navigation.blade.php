@@ -31,6 +31,11 @@
                         自分のコメント
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('contact.create')" :active="request()->routeIs('contact.create')">
+                        お問い合わせ
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -95,6 +100,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
                 自分のコメント
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('contact.create')" :active="request()->routeIs('contact.create')">
+                お問い合わせ
             </x-responsive-nav-link>
         </div>
 
