@@ -28,19 +28,19 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        <a href="{{ url('post/index') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">投稿一覧</a>
+                        <a href="{{ url('post/index') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-blue-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">投稿一覧</a>
                     @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ログイン</a>
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-blue-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">会員登録</a>
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-blue-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">会員登録</a>
                         @endif
                     @endauth
                 </div>
             @endif
-        </div>
-        <div class="flex justify-center text-xl">
-            <a href="{{route('contact.create')}}">お問い合わせ</a>
+            <div class="font-semibold text-blue-400 hover:text-gray-900 dark:text-brue-400 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mt-20">
+                <a href="{{route('contact.create')}}">お問い合わせ</a>
+            </div>
         </div>
     </body>
 </html>
