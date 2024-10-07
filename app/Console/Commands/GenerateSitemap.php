@@ -18,7 +18,7 @@ class GenerateSitemap extends Command
 
     public function handle()
     {
-        Sitemap::create()
+        Sitemap::create('https://laravel.grayzonebbs.com')
             ->add(Url::create('/'))
             ->add(Url::create('/about'))
             ->add(Url::create('/contact'))
